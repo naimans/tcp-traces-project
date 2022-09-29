@@ -1,0 +1,140 @@
+{ "proto":{
+		"ipv4":{
+			"and":[
+				{
+					"offset":0,
+					"length":1,
+					"value":5,
+					"bitmask":15,
+					"equal":"False",
+					"fn": "ihl"
+				},
+				{
+					"offset":1,
+					"length":1,
+					"value":0,
+					"rs":2,
+					"bitmask":255,
+					"equal":"False",
+					"fn": "dscp"
+				},
+				{
+					"offset":1,
+					"length":1,
+					"value":0,
+					"bitmask":3,
+					"equal":"False",
+					"fn": "ecn"
+				},
+				{
+					"offset":9,
+					"length":1,
+					"value":[1,6,17],
+					"bitmask":255,
+					"equal":"False",
+					"fn": "protocol"
+				}
+			]
+		},
+
+		"ipv6":{
+			"and":[
+				{
+					"offset":0,
+					"length":2,
+					"value":0,
+					"rs":4,
+					"bitmask":15,
+					"equal":"False",
+					"fn": "traffic_class"
+				},
+				{
+					"offset":1,
+					"length":3,
+					"value":0,
+					"ls":4,
+					"rs2":4,
+					"bitmask":1048575,
+					"equal":"False",
+					"fn": "flow_lable"
+				},
+				{
+					"offset":6,
+					"length":1,
+					"value":[6,17,58],
+					"bitmask":255,
+					"equal":"False",
+					"fn": "next_hdr"
+				}
+			]
+		},
+
+		"tcp": {
+			"and":[
+				{
+					"offset":12,
+					"length":1,
+					"value":0,
+					"rs":1,
+					"bitmask":7,
+					"equal":"False",
+					"fn": "RSV"
+				},
+				{
+					"offset":13,
+					"length":1,
+					"value":0,
+					"rs":4,
+					"rs2":3,
+					"bitmask":1,
+					"equal":"False",
+					"fn": "CWR"
+				},
+				{
+					"offset":13,
+					"length":1,
+					"value":0,
+					"rs":4,
+					"rs2":2,
+					"bitmask":1,
+					"equal":"False",
+					"fn": "ECE"
+				}
+			]
+		},
+
+		"udp": {
+			"and":[
+				{
+					"offset":4,
+					"length":2,
+					"value":0,
+					"bitmask":65535,
+					"equal":"True",
+					"fn": "length"
+				},
+				{
+					"offset":6,
+					"length":2,
+					"value":0,
+					"bitmask":65535,
+					"equal":"True",
+					"fn": "checksum"
+				}
+			]
+		},
+
+		"icmp4": {
+			"and":[
+			{
+				"offset":0,
+				"length":1,
+				"value":-1,
+				"bitmask":255,
+				"equal":"False",
+				"fn": "type"
+			}
+			]
+		}
+	}
+}
